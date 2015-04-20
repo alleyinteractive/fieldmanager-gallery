@@ -101,6 +101,16 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 			wp_enqueue_script( 'fm_gallery', $this->plugin_url . 'js/fieldmanager-gallery.js', array( 'jquery' ) );
 			self::$has_registered_gallery = True;
 		}
+
+		/**
+		 * Whitelist the data attribute used
+		 * to expose gallery item IDs to the JS.
+		 */
+		add_filter( 'wp_kses_allowed_html', function( $allowed_html ) {
+			$allowed_html['div']['data-fieldmanager-item-id'] = true;
+			return $allowed_html;
+		} );
+
 		parent::__construct( $label, $options );
 	}
 
@@ -144,7 +154,7 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 			if ( is_numeric( $value ) && $value > 0 ) {
 
 				$attachment = get_post( $value );
-				$out = '<div class="gallery-item" data-id="' . esc_attr( $value ) . '">';
+				$out = '<div class="gallery-item" data-fieldmanager-item-id="' . esc_attr( $value ) . '">';
 
 				if ( strpos( $attachment->post_mime_type, 'image/' ) === 0 ) {
 
