@@ -178,7 +178,7 @@ $( document ).on( 'click', '.fm-gallery-button', function( event ) {
 			props.caption = '';
 
 			var galleryItem = $( '<div />', {
-				class: 'gallery-item',
+				'class': 'gallery-item',
 				'data-id': attachment.id,
 			} );
 
@@ -204,7 +204,7 @@ $( document ).on( 'click', '.fm-gallery-button', function( event ) {
 
 			if ( ! $el.data('collection') ) {
 				galleryItem.append( $( '<br />' ) );
-				galleryItem.append( $( '<a/>', { class: "fm-gallery-remove fm-delete", href: "#", html: 'remove' } ) );
+				galleryItem.append( $( '<a/>', { 'class': "fm-gallery-remove fm-delete", 'href': "#", html: 'remove' } ) );
 				galleryItem.append( $( '<br />' ) );
 			}
 
