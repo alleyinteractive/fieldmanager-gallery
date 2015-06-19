@@ -144,6 +144,7 @@ $( document ).on( 'click', '.fm-gallery-button', function( event ) {
 
 		if ( selectedImages.length ) {
 			media_args.state = 'gallery-edit';
+			media_args.editing = true;
 		} else {
 			media_args.state = 'gallery';
 		}
