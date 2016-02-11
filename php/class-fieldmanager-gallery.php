@@ -7,7 +7,7 @@
 class Fieldmanager_Gallery extends Fieldmanager_Field {
 	/**
 	 * Override field_class
-	 * 
+	 *
 	 * @var string
 	 */
 	public $field_class = 'gallery';
@@ -112,7 +112,9 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 				wp_enqueue_style( 'fm_gallery', $this->plugin_url . 'css/fieldmanager-gallery.css', array() );
 				wp_enqueue_script( 'fm_gallery', $this->plugin_url . 'js/fieldmanager-gallery.js', array( 'jquery' ) );
 				wp_localize_script( 'fm_gallery', 'fm_gallery', array(
-					// localize
+					'uploaded_file'  => __( 'Uploaded file', 'lin' ),
+					'remove'         => __( 'remove', 'lin' ),
+					'create_gallery' => __( 'Create Gallery', 'lin' ),
 				) );
 
 				self::$has_registered_gallery = true;
