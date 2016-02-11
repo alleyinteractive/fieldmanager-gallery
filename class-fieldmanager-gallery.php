@@ -5,8 +5,8 @@
 	Plugin URI: https://github.com/alleyinteractive/fieldmanager-gallery
 	Description: A temporary Fieldmanager Field extension for image galleries. This will eventually be merged into Fm Core. Forked from https://github.com/fusioneng/fieldmanager-gallery.
 	Version: 0.1
-	Author: Alley Interactive, Fusion
-	Author URI: http://www.alleyinteractive.com/
+	Author: Fusion
+	Author URI: http://fusion.net/section/tech-product/
 */
 
 /*  This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	wp_die( esc_html__( 'Denied!', 'fieldmanager' ) );
 }
 
-function fm_gallery_setup_files() {
+function fm_gallery_setup() {
 	/**
 	 * Make sure that FM is active.
 	 */
@@ -244,4 +244,4 @@ function fm_gallery_setup_files() {
 	}
 }
 
-add_action( 'after_setup_theme', 'fm_gallery_setup_files' );
+add_action( 'after_setup_theme', 'fm_gallery_setup' );
