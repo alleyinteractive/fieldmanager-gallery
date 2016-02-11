@@ -31,7 +31,7 @@ define( 'FM_GALLERY_VERSION', '0.0.1' );
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
-	wp_die( esc_html__( 'Denied!', 'fieldmanager' ) );
+	exit;
 }
 
 add_action( 'after_setup_theme', function() {
