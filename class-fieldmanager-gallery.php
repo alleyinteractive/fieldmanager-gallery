@@ -121,7 +121,7 @@ function fm_gallery_setup_files() {
 		 */
 		public function __construct( $label, $options = array() ) {
 
-			$this->plugin_dir = plugin_dir_path( __FILE__ ) );
+			$this->plugin_dir = plugin_dir_path( __FILE__ );
 			$this->plugin_url = plugin_dir_url( __FILE__ );
 
 			if ( ! empty( $options['collection'] ) ) {
