@@ -1,22 +1,25 @@
+/**
+ * Fieldmanager Gallery
+ */
+
+.fm-gallery {
+	overflow: auto;
+	zoom: 1;
+}
 
 .fm-gallery .gallery-wrapper {
-	margin: 5px 0 15px 15px;
-	padding-left: 10px;
-	border-left: solid 1px #ccc;
+	margin: 15px 0;
 }
 
-.fm-gallery .gallery-wrapper img {
-	max-width: 100%;
-	height: auto;
-}
-
-.fm-gallery .gallery-wrapper .gallery-item {
+.fm-gallery .gallery-item {
 	float: left;
-	margin: 10px;
+	text-align: center;
+	width: 33%;
+	height: 180px;
 }
 
-.fm-gallery .gallery-wrapper:after {
-	content: ' ';
-	clear: left;
-	display: block;
+.fm-gallery .gallery-item img {
+	max-width: 95%;
+	width: auto;
+	height: auto;
 }
