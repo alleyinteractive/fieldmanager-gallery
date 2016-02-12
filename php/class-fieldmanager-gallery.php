@@ -85,8 +85,8 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 	 */
 	public function __construct( $label, $options = array() ) {
 
-		$this->plugin_dir = plugin_dir_path( __FILE__ );
-		$this->plugin_url = plugin_dir_url( __FILE__ );
+		$this->plugin_dir = FM_GALLERY_PATH;
+		$this->plugin_url = FM_GALLERY_URL;
 
 		if ( ! empty( $options['collection'] ) ) {
 			$this->button_label       = __( 'Attach Gallery', 'fieldmanager' );

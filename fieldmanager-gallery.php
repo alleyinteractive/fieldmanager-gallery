@@ -34,6 +34,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Filesystem path.
+ *
+ * @var string
+ */
+define( 'FM_GALLERY_PATH', plugin_dir_path( __FILE__ ) );
+
+/**
+ * Plugin URL.
+ */
+define( 'FM_GALLERY_URL', plugin_dir_url( __FILE__ ) );
+
 add_action( 'after_setup_theme', function() {
 	if ( defined( 'FM_VERSION' ) ) {
 		require_once( __DIR__ . '/php/class-fieldmanager-gallery.php' );
