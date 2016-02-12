@@ -1,8 +1,8 @@
 var fm_gallery_frame = [];
 ( function( $ ) {
 	var $document = $( document );
-	$document.on( 'click', '.fm-gallery-remove', function( e ) {
-		e.preventDefault();
+	$document.on( 'click', '.fm-gallery-remove', function( event ) {
+		event.preventDefault();
 
 		var parent = $( this ).parents( '.fm-item.fm-gallery' );
 		parent.find( '.fm-gallery-id' ).val( '' );
@@ -14,7 +14,7 @@ var fm_gallery_frame = [];
 	 * Clicking an image inside of the gallery preview will trigger the gallery button
 	 * to click.
 	 */
-	$document.on( 'click', '.fm-gallery .gallery-wrapper a', function( event ){
+	$document.on( 'click', '.fm-gallery .gallery-wrapper a', function( event ) {
 		event.preventDefault();
 		$( this ).closest( '.gallery-wrapper' ).siblings( '.fm-gallery-button' ).trigger( 'click' );
 	} );
@@ -47,7 +47,7 @@ var fm_gallery_frame = [];
 		 * We also need to check for the `post_frame` variable. This is to circumvent
 		 * the Media Explorer overlay onto the `wp.media.view.MediaFrame.Post` object.
 		 */
-		var media_frame_object = ( 'function' === typeof post_frame ) ? post_frame : wp.media.view.MediaFrame.Post;
+		var media_frame_object = ( typeof post_frame === 'function' ) ? post_frame : wp.media.view.MediaFrame.Post;
 		var galleryFrame = media_frame_object.extend( {
 			createStates: function() {
 				var options = this.options;
