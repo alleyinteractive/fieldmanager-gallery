@@ -98,7 +98,7 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 			$this->modal_title        = __( 'Choose an Attachment', 'fieldmanager' );
 		}
 
-		add_action( 'admin_print_scripts', function () {
+		add_action( 'admin_print_scripts', function() {
 			$post = get_post();
 			$args = array();
 			if ( isset( $post ) && $post->ID ) {
@@ -108,7 +108,7 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 		} );
 
 		if ( ! self::$has_registered_gallery ) {
-			add_action( 'admin_enqueue_scripts', function () {
+			add_action( 'admin_enqueue_scripts', function() {
 				wp_enqueue_style( 'fm_gallery', $this->plugin_url . 'css/fieldmanager-gallery.css', array() );
 				wp_enqueue_script( 'fm_gallery', $this->plugin_url . 'js/fieldmanager-gallery.js', array( 'jquery' ) );
 				wp_localize_script( 'fm_gallery', 'fm_gallery', array(
