@@ -83,7 +83,13 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 	 * @param string $label
 	 * @param array  $options
 	 */
-	public function __construct( $label, $options = array() ) {
+	public function __construct( $label = '', $options = array() ) {
+
+		if ( is_array( $label ) ) {
+			$options = $label;
+		} else {
+			$options['label'] = $label;
+		}
 
 		$this->plugin_dir = FM_GALLERY_PATH;
 		$this->plugin_url = FM_GALLERY_URL;
