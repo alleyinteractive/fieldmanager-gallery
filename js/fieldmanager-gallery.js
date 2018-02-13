@@ -180,6 +180,9 @@ var fm_gallery_frame = [];
 			// Store value for saving
 			$el.parent().find( '.fm-gallery-id' ).val( ids.join( ',' ) );
 
+			// Enable the "Empty Gallery" button.
+			$el.parent().find( '.fm-gallery-button-empty' ).prop( 'disabled', false );
+
 			// Append gallery items
 			var $wrapper = $el.parent().find( '.gallery-wrapper' );
 			$wrapper
@@ -203,5 +206,23 @@ var fm_gallery_frame = [];
 
 		// Remove Gallery Settings
 		$( fm_gallery_frame[ $el.attr( 'id' ) ].$el ).find( '.gallery-settings' ).parent().remove();
+	} );
+
+	/**
+	 * Clicking on the "Empty Gallery" button
+	 */
+	$document.on( 'click', '.fm-gallery-button-empty', function( event ) {
+		var $el = $( this );
+
+		event.preventDefault();
+		$el.prop( 'disabled', true );
+
+		$el.parent().find( '.fm-gallery-id' ).val( '' );
+
+		var galleryId = $el.parent().find( '.fm-gallery-button' ).attr( 'id' );
+		delete fm_gallery_frame[ galleryId ];
+
+		var $wrapper = $el.parent().find( '.gallery-wrapper' );
+		$wrapper.html( '' );
 	} );
 } )( jQuery );
