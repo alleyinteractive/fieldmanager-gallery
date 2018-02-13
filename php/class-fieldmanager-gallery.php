@@ -20,6 +20,13 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 	public $button_label;
 
 	/**
+	 * Empty button label
+	 *
+	 * @var string
+	 */
+	public $empty_button_label;
+
+	/**
 	 * Button label in the gallery modal popup
 	 *
 	 * @var string
@@ -96,6 +103,7 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 
 		if ( ! empty( $options['collection'] ) ) {
 			$this->button_label       = __( 'Attach Gallery', 'fieldmanager' );
+			$this->empty_button_label = __( 'Empty Gallery', 'fieldmanager' );
 			$this->modal_button_label = __( 'Select Attachments', 'fieldmanager' );
 			$this->modal_title        = __( 'Choose Attachments', 'fieldmanager' );
 		} else {
@@ -115,8 +123,8 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 
 		if ( ! self::$has_registered_gallery ) {
 			add_action( 'admin_enqueue_scripts', function() {
-				wp_enqueue_style( 'fm_gallery', $this->plugin_url . 'css/fieldmanager-gallery.css', array() );
-				wp_enqueue_script( 'fm_gallery', $this->plugin_url . 'js/fieldmanager-gallery.js', array( 'jquery' ) );
+				wp_enqueue_style( 'fm_gallery', $this->plugin_url . 'css/fieldmanager-gallery.css', array(), FM_GALLERY_VERSION );
+				wp_enqueue_script( 'fm_gallery', $this->plugin_url . 'js/fieldmanager-gallery.js', array( 'jquery' ), FM_GALLERY_VERSION );
 				wp_localize_script( 'fm_gallery', 'fm_gallery', array(
 					'uploaded_file'  => __( 'Uploaded file', 'fieldmanager' ),
 					'remove'         => __( 'remove', 'fieldmanager' ),
@@ -201,8 +209,9 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 		$input_value = implode( ',', $values );
 
 		return sprintf(
-			'<input type="button" class="fm-gallery-button button-secondary fm-incrementable" id="%1$s" value="%3$s" data-choose="%7$s" data-update="%8$s" data-collection="%9$s" />
-			<input type="hidden" name="%2$s" value="%4$s" class="fm-element fm-gallery-id" />
+			'<input type="button" class="fm-gallery-button button-secondary fm-incrementable" id="%1$s" value="%3$s" data-choose="%7$s" data-update="%8$s" data-collection="%9$s" />' .
+			( $this->collection ? ' <input type="button" class="fm-gallery-button-empty button-secondary" value="%10$s"' . disabled( empty( $input_value ), true, false ) . ' />' : '' ) .
+			'<input type="hidden" name="%2$s" value="%4$s" class="fm-element fm-gallery-id" />
 			<div class="gallery-wrapper">%5$s</div>
 			<script type="text/javascript">
 			var fm_preview_size = fm_preview_size || [];
@@ -216,7 +225,8 @@ class Fieldmanager_Gallery extends Fieldmanager_Field {
 			wp_json_encode( $this->preview_size ),
 			esc_attr( $this->modal_title ),
 			esc_attr( $this->modal_button_label ),
-			intval( $this->collection )
+			intval( $this->collection ),
+			esc_attr( $this->empty_button_label )
 		);
 	}
 }
